@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Food bank finder</h1>
+  <p>Current branch data:</p>
+  <ul>
+    <li><strong>Branches:</strong> {{ num_branches }}</li>
+    <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li>
+    <li><strong>Here are all the branches:</strong> {{ branches_list | linebreaks}}</li>
+  </ul>
+
+  <!-- <iframe src=https://www.foodbankscanada.ca/utility-pages/find-a-food-bank.aspx></iframe> -->
+{% endblock %}
