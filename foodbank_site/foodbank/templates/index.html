@@ -1,13 +1,38 @@
 {% extends "base_generic.html" %}
-
 {% block content %}
+  <br><br><br>
   <h1>Food bank finder</h1>
+  <form method="post" action="/create/" class="form-group">
+    <p1>Search by branch:</p1>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        {{form}}
+        <button type="submit", name="search" class="btn btn-success">Search</button> 
+      </div>
+    </div>
+  </form>
+  
   <p>Current branch data:</p>
   <ul>
     <li><strong>Branches:</strong> {{ num_branches }}</li>
-    <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li>
-    <li><strong>Here are all the branches:</strong> {{ branches_list | linebreaks}}</li>
-  </ul>
+    <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li></ul>
+  <p1><strong>Here are all the branches:</strong></p3>
+<!-- table -->
+  <table class="table"> <!-- can also make it borderless with class="table table-borderless"-->
+    <thead></thead><tbody>
+  {% for branch, needs in branches_zip %}
+  <tr>
+    <th scope="row" style="width: 30%">{{ branch | linebreaks}}</th>
+    <td>Needs:
+    <br>
+    {% for need in needs %}
+      {{ need }}
+    {% endfor %}
+    </td>
+    <br><br>
+  </tr>
+  {% endfor %}
+  </tbody></table>
 
   <!-- <iframe src=https://www.foodbankscanada.ca/utility-pages/find-a-food-bank.aspx></iframe> -->
 {% endblock %}
