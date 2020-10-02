@@ -1,26 +1,5 @@
-{% extends "base_generic.html" %}
+{% extends "search_bar.html" %}
 {% block content %}
-<br><br><br>
-<h1>Food bank finder</h1>
-<form method="post" action="/create/" class="form-group">
-  <p1>Search by branch:</p1>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      {{form}}
-      <button type="submit" , name="search" class="btn btn-primary">Search</button>
-    </div>
-  </div>
-</form>
-
-
-
-<button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Search by needs</button>
-
-<div id="demo" class="collapse">
-Lorem ipsum dolor text....
-</div>
-
-
 <br><br>
 <p>Current branch data:</p>
 <ul>
@@ -30,7 +9,7 @@ Lorem ipsum dolor text....
 <p1><strong>Here are all the branches:</strong></p3>
   <br><br>
 
-  {% for branch, needs in branches_zip %}
+  {% for branch, needs in branches_zip %}  
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
@@ -47,6 +26,4 @@ Lorem ipsum dolor text....
     </div>
   </div>
   {% endfor %}
-
-  <!-- <iframe src=https://www.foodbankscanada.ca/utility-pages/find-a-food-bank.aspx></iframe> -->
   {% endblock %}

@@ -1,0 +1,9 @@
+{% extends "search_bar.html" %}
+{% block content %}
+<br><br><h3>We found these results for "{{ query }}":</h3><br>
+{% for result in results %}
+<div class="container-fluid">
+    {{ result | linebreaks }}
+</div>
+{% endfor %}
+{% endblock %}
