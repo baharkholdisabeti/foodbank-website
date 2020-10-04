@@ -51,10 +51,16 @@ def search_results(request):
         if form.is_valid():
             search = form.cleaned_data['branch_form']
             results = []
-            for word in search.split(): #duplicates are allowed rn
-                y = Branch.objects.filter(Q(address__icontains=word) |  Q(city__icontains=word) | Q(province__icontains=word) | Q(postal_code__icontains=word))
-                for x in y:
-                    results.append(str(x))
+            branches_list = Branch.objects.all()
+            for branch in branches_list:
+                for word in search.split(): 
+                    if (branch.address.upper() in word.upper()) or (branch.city.upper() in word.upper()) or \
+                         (branch.province.upper() in word.upper()) or (branch.postal_code.upper() in word.upper()) or \
+                            (word.upper() in branch.address.upper()) or (word.upper() in branch.city.upper()) or \
+                                (word.upper() in branch.province.upper()) or (word.upper() in branch.postal_code.upper()):
+                        results.append(str(branch))
+                        break
+                continue
             # redirect to a new URL:
             context = {
                 'query': search,
