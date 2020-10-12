@@ -2,7 +2,7 @@
 {% block search %}
 <br><h1>Food Bank Finder</h1><br>
 <p1>Search by branch:</p1><br><br>
-<form method="post" action="/foodbank/search/" class="form-inline my-2 my-lg-0">{% csrf_token %}
+<form method="post" action="/foodbank/" class="form-inline my-2 my-lg-0">{% csrf_token %}
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       {{form}}
@@ -11,7 +11,7 @@
   </div>
 </form>
 <br>
-<button data-toggle="collapse" data-target="#demo" class="btn btn-outline-success">Search by needs</button>
+<button data-toggle="collapse" data-target="#demo" class="btn btn-outline-success">Filter by needs</button>
 
 <!-- allow user to search by type of item they have -->
 <div id="demo" class="collapse">
@@ -34,7 +34,7 @@
                 <p1>Bread</p1>
             </label>
         </div>
-    </div>
+    </div> 
 </div>
 </div>
 {% endblock %}

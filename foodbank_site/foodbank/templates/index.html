@@ -6,9 +6,10 @@
   <li><strong>Branches:</strong> {{ num_branches }}</li>
   <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li>
 </ul>
-<p1><strong>Here are all the branches:</strong></p3>
-  <br><br>
 
+  {% if query %}
+  <h3><strong>We found these results for "{{ query }}":</strong></h3><br>
+  {% endif %}
   {% for branch, needs in branches_zip %}  
   <div class="container-fluid">
     <div class="row">
