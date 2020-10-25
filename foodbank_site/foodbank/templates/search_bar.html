@@ -6,12 +6,12 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       {{form}}
-      <button type="submit" , name="search" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <button name="search" class="btn success my-2 my-sm-0">Search</button>
     </div>
   </div>
 </form>
 <br> 
-<button data-toggle="collapse" data-target="#demo" class="btn btn-outline-success">Filter by needs</button>
+<button data-toggle="collapse" data-target="#demo" class="btn success">Filter by needs</button>
 
 <!--
 <div id="demo" class="collapse"></div>
@@ -45,20 +45,20 @@
     <div class="col-md-3">
         <div class="custom-control custom-checkbox image-checkbox">
             <input type="checkbox" class="custom-control-input" id="ck1a" name="milk">
-            <label class="custom-control-label" for="ck1a">
+            <label class="image-checkbox" for="ck1a">
                 {% load static %}
                 <img src="{% static 'media/milk.png' %}" alt="#" class="img-fluid">
-                <p1>Milk</p1>
             </label>
+            <p1>Milk</p1>
         </div>
     </div>
     <div class="col-md-3">
         <div class="custom-control custom-checkbox image-checkbox">
             <input type="checkbox" class="custom-control-input" id="ck1b" name="bread">
-            <label class="custom-control-label" for="ck1b">
+            <label class="image-checkbox" for="ck1b">
                 <img src="{% static 'media/bread.jpg' %}" alt="#" class="img-fluid">
-                <p1>Bread</p1>
             </label>
+            <p1>Bread</p1>
         </div>
     </div></form>
 </div>
