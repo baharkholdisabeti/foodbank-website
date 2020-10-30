@@ -1,6 +1,6 @@
 {% extends "base_generic.html" %}
 {% block search %}
-<br><h1>Food Bank Finder</h1><br>
+<br><h1>Find Food Bank Shortages</h1><br>
 <p1>Search by branch:</p1><br><br>
 <form method="post" action="/foodbank/" class="form-inline my-2 my-lg-0">{% csrf_token %}
   <div class="input-group mb-3">
@@ -12,32 +12,6 @@
 </form>
 <br> 
 <button data-toggle="collapse" data-target="#demo" class="btn success">Filter by needs</button>
-
-<!--
-<div id="demo" class="collapse"></div>
-  <div class="row">
-    <form method="post" action="/foodbank/" class="form-inline my-2 my-lg-0">{% csrf_token %}
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1a", name="filter_form">
-            <label class="custom-control-label" for="ck1a", name="filter_form">
-                {% load static %}
-                <img src="{% static 'media/milk.png' %}" alt="#" class="img-fluid">
-                <p1>Milk</p1>
-            </label>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1b", name="filter_form">
-            <label class="custom-control-label" for="ck1b", name="filter_form">
-                <img src="{% static 'media/bread.jpg' %}" alt="#" class="img-fluid">
-                <p1>Bread</p1>
-            </label>
-        </div>
-    </div></form>
-  </div>
-</div> -->
 
 <div id="demo" class="collapse">
   <div class="row">
