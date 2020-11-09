@@ -21,6 +21,9 @@ p1{
 li{
 	color: black;
 }
+.list-group-flush li {
+	background-color:transparent;
+}
 .button1 {
 	background-color: white;
 	color: black;

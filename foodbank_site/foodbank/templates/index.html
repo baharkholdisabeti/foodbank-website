@@ -8,24 +8,27 @@
   <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li>
 </ul> -->
 
-  {% if query %}
-  <h3><strong>We found these results for "{{ query }}":</strong></h3><br>
-  {% endif %}
-  {% for branch, needs in branches_zip %}  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3">
-        {{ branch | linebreaks}}
+{% if query %}
+<h3><strong>We found these results for "{{ query }}":</strong></h3><br>
+{% endif %}
+<ul class="list-group list-group-flush">
+  {% for branch_name, branch_info, needs in branches_zip %}  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm-3">
+          <b>{{ branch_name}}</b>
+          {{ branch_info | linebreaks}}
+        </div>
+        <div class="col-sm-4">
+          <p1>Needs:</p1>
+          <br>
+          {% for need in needs %}
+          <p1>{{ need }}</p1><br>
+          {% endfor %}
+          <br><br>
+        </div>
       </div>
-      <div class="col-sm-9">
-        <p1>Needs:</p1>
-        <br>
-        {% for need in needs %}
-        <p1>{{ need }}</p1><br>
-        {% endfor %}
-        <br><br>
-      </div>
-    </div>
-  </div>
+    </li>
   {% endfor %}
-  {% endblock %}
+</ul>
+{% endblock %}

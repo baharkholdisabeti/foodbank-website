@@ -22,12 +22,8 @@ class MyModelName(models.Model):
 class Branch(models.Model):
     # Fields
     branch_ID = models.IntegerField()
-    address = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    province = models.CharField(max_length=200)
-    postal_code = models.CharField(max_length=200)
-    phone_number = models.CharField(max_length=200)
-    email_address = models.CharField(max_length=200)
+    branch_name = models.CharField(max_length=200, default="NULL")
+    branch_info = models.TextField(max_length=250)
 
     # Metadata
     class Meta: 
@@ -37,10 +33,9 @@ class Branch(models.Model):
     # Returns the url to access a particular instance of MyModelName
     #def get_absolute_url(self):
      #   return reverse('model-detail-view', args=[str(self.branchID)])
-    
+
     def __str__(self):
-        response = self.address + ", " + self.city + "\n" + self.postal_code + "\n" + self.phone_number + "\n" + self.email_address
-        return response
+        return self.branch_name
 
 class BranchNeed(models.Model):
     # Fields

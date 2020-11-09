@@ -7,6 +7,9 @@ from .forms import FilterForm
 
 def index(request):
     branches_list = Branch.objects.all()
+    # stores branch names
+    branches_names = []
+    # stores other branch info such as location, contact
     branches_strs = []
     branches_needs = []
     results = []
@@ -22,17 +25,11 @@ def index(request):
                 branches_list = Branch.objects.all()
                 for branch in branches_list:
                     for word in query.split(): 
-                        if (branch.address.upper() in word.upper()) or (branch.city.upper() in word.upper()) or \
-                            (branch.province.upper() in word.upper()) or (branch.postal_code.upper() in word.upper()) or \
-                                (word.upper() in branch.address.upper()) or (word.upper() in branch.city.upper()) or \
-                                    (word.upper() in branch.province.upper()) or (word.upper() in branch.postal_code.upper()):
+                        if ((branch.branch_info.upper() in word.upper()) or (word.upper() in branch.branch_info.upper())) \
+                            or (branch.branch_name.upper() in word.upper()) or (word.upper() in branch.branch_name.upper()):
                             results.append(branch)
                             break
                     continue
-        else:
-            print("here")
-            if "milk" in request.POST:
-                print("HIIIII")
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -41,7 +38,8 @@ def index(request):
     
     # find all needs
     for x in results:
-            branches_strs.append(str(x))
+            branches_names.append(str(x))
+            branches_strs.append(x.branch_info)
             all_needs = BranchNeed.objects.filter(branch_ID=x.branch_ID)
             this_needs = []
             for y in all_needs:
@@ -54,7 +52,7 @@ def index(request):
         'query': query,
         'num_branches': num_branches,
         'num_branch_needs': num_branch_needs,
-        'branches_zip': zip(branches_strs, branches_needs),
+        'branches_zip': zip(branches_names, branches_strs, branches_needs),
         'form': form,
     }
 
