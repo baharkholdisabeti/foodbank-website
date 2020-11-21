@@ -1,16 +1,11 @@
 {% extends "search_bar.html" %}
 {% block content %}
 <br><br>
-<!--
-<p>Current branch data:</p>
-<ul>
-  <li><strong>Branches:</strong> {{ num_branches }}</li>
-  <li><strong>Branch needs:</strong> {{ num_branch_needs }}</li>
-</ul> -->
 
 {% if query %}
 <h3><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
+<div class="ex1">
 <ul class="list-group list-group-flush">
   {% for branch_name, branch_info, needs in branches_zip %}  
     <li class="list-group-item">
@@ -30,5 +25,5 @@
       </div>
     </li>
   {% endfor %}
-</ul>
+</ul></div>
 {% endblock %}

@@ -64,12 +64,8 @@ WSGI_APPLICATION = 'foodbank_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'generalDB',
-        'USER': 'webclient',
-        'PASSWORD': 'askababin',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dbsqlite',
     }
 }
 

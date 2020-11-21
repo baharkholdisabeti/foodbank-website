@@ -1,3 +1,10 @@
+.navbar-custom { 
+    background-color: rgb(0, 207, 100);
+} 
+div.ex1 {
+	max-height: 500px;
+	overflow-y: scroll;
+}
 body {
 	background: white url("../media/pexels-lukas-349610.jpg") no-repeat;
 	-webkit-background-size: cover;
@@ -6,7 +13,7 @@ body {
   	background-size: cover;
 }
 h2{
-    color: orange;
+    color: black
 }
 h1{
 	color: rgb(57, 139, 46);

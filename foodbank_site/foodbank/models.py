@@ -21,7 +21,7 @@ class MyModelName(models.Model):
 
 class Branch(models.Model):
     # Fields
-    branch_ID = models.IntegerField()
+    branch_ID = models.AutoField(primary_key=True)
     branch_name = models.CharField(max_length=200, default="NULL")
     branch_info = models.TextField(max_length=250)
 
