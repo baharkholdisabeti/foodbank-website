@@ -1,6 +1,10 @@
 .navbar-custom { 
     background-color: rgb(0, 100, 48);
 } 
+div.container.round.bg-light {
+	border-radius: 20px;
+	height: 130px;
+}
 div.ex1 {
 	max-height: 500px;
 	overflow-y: scroll;
