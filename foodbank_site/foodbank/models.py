@@ -39,8 +39,8 @@ class Branch(models.Model):
 
 class BranchNeed(models.Model):
     # Fields
-    branch_ID = models.ForeignKey('Branch', on_delete=models.SET_NULL, null=True)
-    need = models.ForeignKey('Need', on_delete=models.SET_NULL, null=True)
+    branch_ID = models.ForeignKey('Branch', on_delete=models.CASCADE)
+    need = models.ForeignKey('Need', on_delete=models.CASCADE)
 
     # Metadata
     class Meta: 
@@ -57,7 +57,7 @@ class BranchNeed(models.Model):
 
 class Need(models.Model):
     # Fields
-    need_ID = models.IntegerField()
+    need_ID = models.AutoField(primary_key=True)
     need_str = models.CharField(max_length=200)
 
     # Metadata
