@@ -4,8 +4,10 @@
 div.ex1 {
 	max-height: 500px;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 body {
+	overflow: hidden;
 	background: white url("../media/pexels-lukas-349610.jpg") no-repeat;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;

@@ -3,27 +3,35 @@
 <br><br>
 
 {% if query %}
-<h3><strong>We found these results for "{{ query }}":</strong></h3><br>
+<h3 class="text-center"><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
 <div class="ex1">
-<ul class="list-group list-group-flush">
   {% for branch_name, branch_info, needs in branches_zip %}  
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-sm-3">
-          <b>{{ branch_name}}</b>
-          {{ branch_info | linebreaks}}
-        </div>
-        <div class="col-sm-4">
-          <p1>Needs:</p1>
-          <br>
-          {% for need in needs %}
-          <p1>{{ need }}</p1><br>
-          {% endfor %}
-          <br><br>
+    {% if not forloop.counter|divisibleby:2 %}
+    <div class="row offset-1">
+    {% endif %}
+      <div class="col-sm-5">
+        <div class="container rounded bg-light">
+          <div class="row">
+            <div class="col-sm-6">
+              <b>{{ branch_name}}</b>
+              {{ branch_info | linebreaks}}
+            </div>
+            <div class="col-sm-6">
+              <p1>Needs:</p1>
+              <br>
+              {% for need in needs %}
+                <p1>{{ need }}</p1><br>
+              {% endfor %}
+              <br><br>
+            </div>
+          </div>
         </div>
       </div>
-    </li>
+    {% if forloop.counter|divisibleby:2 %}
+    </div>
+    {% endif %}
+    <br>
   {% endfor %}
-</ul></div>
+</div>
 {% endblock %}
