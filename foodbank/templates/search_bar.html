@@ -15,27 +15,10 @@
 
 <div id="demo" class="collapse">
   <div class="row">
-    <form method="post" action="/foodbank/" class="form-inline my-2 my-lg-0">{% csrf_token %}
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1a" name="milk">
-            <label class="image-checkbox" for="ck1a">
-                {% load static %}
-                <img src="{% static 'media/milk.png' %}" alt="#" class="img-fluid">
-            </label>
-            <p1>Milk</p1>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1b" name="bread">
-            <label class="image-checkbox" for="ck1b">
-                <img src="{% static 'media/bread.jpg' %}" alt="#" class="img-fluid">
-            </label>
-            <p1>Bread</p1>
-        </div>
-    </div></form>
-</div>
+    {% load static %}
+    <img src="{% static 'media/milk.png' %}" alt="#" class="img-fluid" width="180" height="130">
+    <img src="{% static 'media/bread.jpg' %}" alt="#" class="img-fluid" width="180" height="130">
+  </div>
 </div>
 </div>
 {% endblock %}

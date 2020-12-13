@@ -47,19 +47,3 @@ li{
 	color: black;
 	border: 2px solid #000002; /* Green */
 }
-  
-input[type=checkbox] + label:hover,
-input[type=checkbox]:checked + label {
-	border: solid 5px orange;
-}
-
-.success {
-	border-color: #000000;
-	background-color: white;
-}
-
-.success:hover {
-	background-color: #4CAF50;
-	color: white;
-}
- 

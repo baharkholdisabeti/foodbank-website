@@ -2,12 +2,12 @@
 
 {% block add_jquery %}
   {% load static %}
+  <script src="{% static 'js/plugins/imgcheckbox.js' %}"></script>  
   <script src="{% static 'js/index.js' %}"></script>   
 {% endblock %}
 
 {% block content %}
 <br><br>
-
 {% if query %}
 <h3 class="text-center"><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
