@@ -1,4 +1,10 @@
 {% extends "search_bar.html" %}
+
+{% block add_jquery %}
+  {% load static %}
+  <script src="{% static 'js/index.js' %}"></script>   
+{% endblock %}
+
 {% block content %}
 <br><br>
 
