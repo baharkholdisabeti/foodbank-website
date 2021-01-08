@@ -17,12 +17,12 @@
     <div class="row offset-1">
     {% endif %}
       <div class="col-sm-5">
-        <div class="container round bg-light">
-          <div class="row">
-            <div class="col-sm-4">
-              <b>{{ branch_name}}</b>
-              {{ branch_info | linebreaks}}
-            </div>
+        <div branch_name="{{ branch_name }}" needs="{{ needs }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->
+          <!-- <div class="row">
+            <div class="col-sm-4"> -->
+              <br><p><b>{{ branch_name}}</b></p>
+              <p>{{ branch_info | linebreaks}}</p>
+            <!-- </div>
             <div class="col-sm-8">
               <p1>Needs:</p1>
               <br>
@@ -30,8 +30,8 @@
                 <p1>{{ need }}</p1><br>
               {% endfor %}
               <br><br>
-            </div>
-          </div>
+            </div> 
+          </div> -->
         </div>
       </div>
     {% if forloop.counter|divisibleby:2 %}
@@ -40,4 +40,20 @@
     <br>
   {% endfor %}
 </div>
+
+<!-- Modal -->
+<div id="moreInfoModal" class="modal hide" role="dialog" 
+     aria-labelledby="moreInfoModalLabel" aria-hidden="true">
+  <h3><div class="modal-header" id="modalTitle">Null</div></h3>
+  <div class="row">
+    <div class = "col-xs-4">
+      <div id="modalNeeds"class="modal-body"></div>
+    </div>
+    <div class = "col-xs-8">
+      <!--The div element for the map -->
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

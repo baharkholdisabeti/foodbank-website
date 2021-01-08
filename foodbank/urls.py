@@ -6,6 +6,6 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', RedirectView.as_view(url='foodbank/')),
-    path('about/', views.about, name='about'),
+    path('foodbank/about/', views.about, name='about'),
     path('foodbank/', views.index, name='index'),
 ]

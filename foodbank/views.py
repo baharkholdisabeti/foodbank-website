@@ -30,6 +30,10 @@ def index(request):
                             results.append(branch)
                             break
                     continue
+        elif 'reset' in request.POST:
+            branches_list = Branch.objects.all()
+            form = SearchForm()
+            results = branches_list
 
     # if a GET (or any other method) we'll create a blank form
     else:

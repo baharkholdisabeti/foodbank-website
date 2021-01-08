@@ -1,22 +1,48 @@
 .navbar-custom { 
     background-color: rgb(0, 100, 48);
 } 
-div.container.round.bg-light {
+div.container.round {
+	background-color: whitesmoke;
 	border-radius: 20px;
-	height: 130px;
+	height: 150px;
+}
+div.container.round:hover {
+	background-color: rgb(164, 184, 155);
 }
 div.ex1 {
-	max-height: 500px;
-	overflow-y: scroll;
 	overflow-x: hidden;
 }
+img.img-fluid.checkbox {
+	float: left;
+    width:  180px;
+    height: 120px;
+    object-fit: cover;
+}
+img.img-fluid.checkbox:hover {
+	border: 2px solid rgb(164, 184, 155);
+}
+button.btn.search:hover {
+	border: 1px solid rgb(164, 184, 155);
+}
+div.input-group-prepend.round {
+	border-radius: 100px;
+}
 body {
-	overflow: hidden;
+	overflow-x: hidden;
 	background: white url("../media/pexels-lukas-349610.jpg") no-repeat;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
-  	background-size: cover;
+	background-size: cover;
+	  
+	/* Set a specific height */
+	min-height: 500px; 
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 h2{
 	font-family: 'Abril Fatface';
@@ -30,10 +56,12 @@ h1{
 p{
 	font-family: 'Adamania';
 	color: black;
+	text-align: center;
 }
 p1{
 	font-family: 'Adamania';
 	color: black;
+	text-align: center;
 }
 li{
 	font-family: 'Adamania';
@@ -45,5 +73,13 @@ li{
 .button1 {
 	background-color: white;
 	color: black;
-	border: 2px solid #000002; /* Green */
+	border: 2px solid #000002; 
+}
+.modal {
+	position: fixed;
+	background-color: white;
+	border-radius: 20px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
