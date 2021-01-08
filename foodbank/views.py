@@ -4,6 +4,7 @@ from foodbank.models import Branch, BranchNeed
 from django.db.models import Q
 from .forms import SearchForm
 from .forms import FilterForm
+from django.conf import settings
 
 def index(request):
     branches_list = Branch.objects.all()
@@ -42,13 +43,13 @@ def index(request):
     
     # find all needs
     for x in results:
-            branches_names.append(str(x))
-            branches_strs.append(x.branch_info)
-            all_needs = BranchNeed.objects.filter(branch_ID=x.branch_ID)
-            this_needs = []
-            for y in all_needs:
-                this_needs.append(str(y))
-            branches_needs.append(this_needs)
+        branches_names.append(str(x))
+        branches_strs.append(x.branch_info)
+        all_needs = BranchNeed.objects.filter(branch_ID=x.branch_ID)
+        this_needs = []
+        for y in all_needs:
+            this_needs.append(str(y))
+        branches_needs.append(this_needs)
     num_branches = len(results)
     num_branch_needs = len(branches_needs)
 
@@ -58,6 +59,7 @@ def index(request):
         'num_branch_needs': num_branch_needs,
         'branches_zip': zip(branches_names, branches_strs, branches_needs),
         'form': form,
+        'maps_key': settings.GOOGLE_MAPS_API_KEY,
     }
 
     # Render the HTML template index.html with the data in the context variable

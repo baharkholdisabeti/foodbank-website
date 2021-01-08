@@ -1,5 +1,5 @@
 // Initialize and add the map
-function initMap(markerLocation) {
+function initMap() {
     // The location of Uluru
     const uluru = { lat: -25.344, lng: 131.036 };
     // The map, centered at Uluru
@@ -9,7 +9,7 @@ function initMap(markerLocation) {
     });
     // The marker, positioned at Uluru
     const marker = new google.maps.Marker({
-    position: markerLocation,
+    position: uluru,
     map: map,
     });
 }
@@ -49,7 +49,8 @@ $( document ).ready(function() {
         $('#modalNeeds').html($(needsDisplay));
         $('#moreInfoModal').modal('show');
 
-        
+        // add map marker!
+        initMap();
 
         // makes sure $(document).click is not also triggered
         e.stopPropagation();

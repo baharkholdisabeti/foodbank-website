@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -114,3 +116,6 @@ STATIC_URL = '/foodbank/static/'
 #STATICFILES_DIRS = [
 #    os.path.join(BASE_DIR, 'foodbank/static')
 #]
+
+# get env variables (for API keys and such)
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
