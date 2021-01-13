@@ -24,13 +24,17 @@ def index(request):
             if form.is_valid():
                 query = form.cleaned_data['branch_form']
                 branches_list = Branch.objects.all()
+                add = True
                 for branch in branches_list:
                     for word in query.split(): 
                         if ((branch.branch_info.upper() in word.upper()) or (word.upper() in branch.branch_info.upper())) \
                             or (branch.branch_name.upper() in word.upper()) or (word.upper() in branch.branch_name.upper()):
-                            results.append(branch)
-                            break
-                    continue
+                            pass
+                        else:
+                            add = False
+                    if add:
+                        results.append(branch)
+                    add = True
         elif 'reset' in request.POST:
             branches_list = Branch.objects.all()
             form = SearchForm()

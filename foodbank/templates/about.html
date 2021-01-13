@@ -10,5 +10,22 @@
 {% endblock %}
 
 {% block content %}
-This is the about page
+{% load static %}
+<img src="{% static 'media/logo1.png' %}" alt="" class="center" width="10%" height="10%">
+<h1 class="text-center">About</h1><br>
+
+<p><b>Food banks are an essential service that provide food and much needed resources to thousands of Canadians daily. With many Canadians
+wanting to contribute more to their communities by donating to food banks and community centers, it is important for them to donate
+resources that will be of great use to their local food banks.</b></p>
+<p><b>
+Food drives are often only able to accept and donate non-perishable food items which, while valuable to food banks, are not enough
+to provide a balanced diet for families who rely on food banks for their meals. I've Got Extra strives to meet the current needs of
+food banks, including perishable items such as produce, meat, and dairy products. The site was created to connect 
+the needs of food banks with the resources their community has to offer on an easy-to-use platform. Simply search for your local 
+food bank to see what items are most needed for that week, or filter food banks based on the resources that you are able to donate.</b></p>
+<div class="row">
+  <img src="{% static 'media/foodbank3.jpg' %}" alt="" class="offset-2" width="35%" height="20%">
+  <img src="{% static 'media/foodbank2.jpg' %}" alt="" width="35%" height="20%">
+</div>
+
 {% endblock %}

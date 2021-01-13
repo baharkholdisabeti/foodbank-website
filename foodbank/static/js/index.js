@@ -27,7 +27,7 @@ function initMap(branchName) {
 
 // JQuery that's being run when the page loads
 $( document ).ready(function() {
-    $("img").imgCheckbox({
+    $("img.img-fluid.checkbox").imgCheckbox({
         onload: function(){
             // Do something fantastic!
             $(this).select();
