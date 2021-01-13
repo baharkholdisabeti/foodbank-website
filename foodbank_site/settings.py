@@ -111,7 +111,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'static')
+STATIC_ROOT= 'https://foodbank-shortages.herokuapp.com/foodbank/foodbank/static'
 STATIC_URL = '/foodbank/static/'
 #STATICFILES_DIRS = [
 #    os.path.join(BASE_DIR, 'foodbank/static')
