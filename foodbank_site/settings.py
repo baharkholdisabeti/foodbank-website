@@ -114,7 +114,7 @@ USE_TZ = True
 STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/foodbank/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'foodbank/static')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # get env variables (for API keys and such)
