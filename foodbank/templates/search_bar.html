@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 {% block search %}
-<br><h1 class="text-center">Find Food Bank Shortages</h1><br>
+{% load static %}
+<img src="{% static 'media/logo1.png' %}" alt="" class="center" width="10%" height="10%">
+<h1 class="text-center">Find Food Bank Shortages</h1><br>
 <div class="col-sm-10 offset-3">
 <p1 class="text-center"><strong>Search by branch:</strong></p1><br>
 <div class="row">
@@ -21,7 +23,6 @@
 
 <div id="demo" class="collapse">
   <div class="row">
-    {% load static %}
     <img src="{% static 'media/milk.png' %}" alt="#" class="img-fluid checkbox" width="180" height="130">
     <img src="{% static 'media/bread.jpg' %}" alt="#" class="img-fluid checkbox" width="180" height="130">
   </div>
