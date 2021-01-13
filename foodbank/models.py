@@ -24,6 +24,8 @@ class Branch(models.Model):
     branch_ID = models.AutoField(primary_key=True)
     branch_name = models.CharField(max_length=200, default="NULL")
     branch_info = models.TextField(max_length=250)
+    lng = models.FloatField(default=0)
+    lat = models.FloatField(default=0)
 
     # Metadata
     class Meta: 

@@ -1,18 +1,7 @@
-// set latitude and longitude of branches
-function getLatLong(){
-    var hash={};
-    hash={ "The Burlington Food Bank":"43.331800,-79.821060","Guelph Food Bank":"43.536840,-80.262370" }
-    return hash;
-}
-
 // Initialize and add the map
-function initMap(branchName) {
-    var hash = getLatLong();
-    var longlat = hash[branchName].split(",");
-    longlat[0] = parseFloat(longlat[0]);
-    longlat[1] = parseFloat(longlat[1]);
+function initMap(longitude, latitude) {
     // The location of branch
-    const coords = { lat: longlat[0], lng: longlat[1] };
+    const coords = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
     // The map, centered at coords
     const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 14,
@@ -65,7 +54,9 @@ $( document ).ready(function() {
         $('#moreInfoModal').modal('show');
 
         // add map marker!
-        initMap($(this).attr('branch_name'));
+        var longitude = $(this).attr('lng');
+        var latitude = $(this).attr('lat');
+        initMap(longitude, latitude);
 
         // makes sure $(document).click is not also triggered
         e.stopPropagation();

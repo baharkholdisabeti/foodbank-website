@@ -10,6 +10,9 @@ def index(request):
     branches_list = Branch.objects.all()
     # stores branch names
     branches_names = []
+    # stores branch longitudes and latitudes
+    branches_lng = []
+    branches_lat = []
     # stores other branch info such as location, contact
     branches_strs = []
     branches_needs = []
@@ -49,6 +52,8 @@ def index(request):
     for x in results:
         branches_names.append(str(x))
         branches_strs.append(x.branch_info)
+        branches_lng.append(x.lng)
+        branches_lat.append(x.lat)
         all_needs = BranchNeed.objects.filter(branch_ID=x.branch_ID)
         this_needs = []
         for y in all_needs:
@@ -61,7 +66,7 @@ def index(request):
         'query': query,
         'num_branches': num_branches,
         'num_branch_needs': num_branch_needs,
-        'branches_zip': zip(branches_names, branches_strs, branches_needs),
+        'branches_zip': zip(branches_names, branches_strs, branches_needs, branches_lng, branches_lat),
         'form': form,
         'maps_key': settings.GOOGLE_MAPS_API_KEY,
     }

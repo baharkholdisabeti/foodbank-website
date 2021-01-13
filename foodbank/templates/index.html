@@ -15,12 +15,12 @@
 <h3 class="text-center"><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
 <div class="ex1">
-  {% for branch_name, branch_info, needs in branches_zip %}  
+  {% for branch_name, branch_info, needs, lng, lat in branches_zip %}  
     {% if not forloop.counter|divisibleby:2 %}
     <div class="row offset-1">
     {% endif %}
       <div class="col-sm-5">
-        <div branch_name="{{ branch_name }}" needs="{{ needs }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->
+        <div branch_name="{{ branch_name }}" needs="{{ needs }}" lng="{{ lng }}" lat="{{ lat }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->
           <br><p><b>{{ branch_name}}</b></p>
           <p>{{ branch_info | linebreaks}}</p>
         </div>
