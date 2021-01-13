@@ -1,6 +1,6 @@
 # from django.http import HttpResponse
 from django.shortcuts import render
-from foodbank.models import Branch, BranchNeed
+from foodbank.models import Branch, BranchNeed, Need
 from django.db.models import Q
 from .forms import SearchForm
 from .forms import FilterForm
@@ -62,7 +62,11 @@ def index(request):
     num_branches = len(results)
     num_branch_needs = len(branches_needs)
 
+    # get a list of needs the user can filter by
+    possible_needs = Need.objects.values_list('need_str', flat=True)
+
     context = {
+        'possible_needs': possible_needs,
         'query': query,
         'num_branches': num_branches,
         'num_branch_needs': num_branch_needs,

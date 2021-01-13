@@ -20,9 +20,9 @@ div.ex1 {
 }
 img.img-fluid.checkbox {
 	float: left;
-    width:  180px;
-    height: 120px;
-    object-fit: cover;
+    width:  140px;
+    height: 50px;
+    object-fit: scale-down;
 }
 img.img-fluid.checkbox:hover {
 	border: 2px solid rgb(164, 184, 155);
