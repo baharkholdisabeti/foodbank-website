@@ -17,7 +17,7 @@ SECRET_KEY = 'cvrcez@wj**3e1+a5b2b-d8rqu-7kf=jch%e2s!n-@hn!$h)4q'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'protected-falls-29001.herokuapp.com',
+    'foodbank-shortages.herokuapp.com',
     '127.0.0.1',
 ]
 
