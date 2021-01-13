@@ -5,4 +5,4 @@ I've Got Extra! publicises the current needs of each food bank branch so donors 
 
 Simply search for your local food bank to see what items are most needed for that week, or filter food banks based on the resources that you are able to donate.
 
-[Visit I've Got Extra!](https://foodbank-shortages.herokuapp.com/foodbank/about/)
+[Visit I've Got Extra!](https://foodbank-shortages.herokuapp.com/foodbank)
