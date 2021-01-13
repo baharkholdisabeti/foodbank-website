@@ -1,15 +1,26 @@
+// set latitude and longitude of branches
+function getLatLong(){
+    var hash={};
+    hash={ "The Burlington Food Bank":"43.331800,-79.821060","Guelph Food Bank":"43.536840,-80.262370" }
+    return hash;
+}
+
 // Initialize and add the map
-function initMap() {
-    // The location of Uluru
-    const uluru = { lat: -25.344, lng: 131.036 };
-    // The map, centered at Uluru
+function initMap(branchName) {
+    var hash = getLatLong();
+    var longlat = hash[branchName].split(",");
+    longlat[0] = parseFloat(longlat[0]);
+    longlat[1] = parseFloat(longlat[1]);
+    // The location of branch
+    const coords = { lat: longlat[0], lng: longlat[1] };
+    // The map, centered at coords
     const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
+    zoom: 14,
+    center: coords,
     });
-    // The marker, positioned at Uluru
+    // The marker, positioned at coords
     const marker = new google.maps.Marker({
-    position: uluru,
+    position: coords,
     map: map,
     });
 }
@@ -33,6 +44,10 @@ $( document ).ready(function() {
     $(document).click(function() {
         $('#moreInfoModal').modal('hide');
     });
+    // to make sure modal doesn't close when modal is also clicked on
+    $('#moreInfoModal').click(function (e) {
+        e.stopPropagation();
+    });
     // for opening a modal
     $('div[name ="branch_listing"]').click(function(e) {
         $('#modalTitle').html($(this).attr('branch_name'));
@@ -50,7 +65,7 @@ $( document ).ready(function() {
         $('#moreInfoModal').modal('show');
 
         // add map marker!
-        initMap();
+        initMap($(this).attr('branch_name'));
 
         // makes sure $(document).click is not also triggered
         e.stopPropagation();

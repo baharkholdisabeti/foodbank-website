@@ -7,7 +7,6 @@
   <!-- maps -->
   <!-- key is stored in environment variable which is locally stored in the .env file and not included in the public repo -->
   <script src="https://maps.googleapis.com/maps/api/js?key={{ maps_key }}" defer></script>
-  print(maps_key)
 {% endblock %}
 
 {% block content %}
@@ -37,11 +36,11 @@
 <div id="moreInfoModal" class="modal hide" role="dialog" 
      aria-labelledby="moreInfoModalLabel" aria-hidden="true">
   <h3><div class="modal-header" id="modalTitle">Null</div></h3>
-  <div class="row">
-    <div class = "col-xs-5">
+  <div class="row" style="height:100%; width:100%;">
+    <div class = "col-xs-5" style="height:100%; width:20%;">
       <div id="modalNeeds"class="modal-body"></div>
     </div>
-    <div class = "col-xs-7">
+    <div class = "col-xs-7 map-container">
       <!--The div element for the map -->
       <div id="map"></div>
     </div>
