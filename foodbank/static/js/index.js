@@ -43,12 +43,21 @@ $( document ).ready(function() {
         // creating html code to display needs on modal
         // must split since needsList is read as a string
         var needsList = $(this).attr('needs').split(',');
-        var needsDisplay = '<p1>Needs:</p1><br>';
+        var needsDisplay = '<p><b>Needs:<b></p>';
         var x; 
-        for (x=0; x<needsList.length; x+=1){
-            // some string stripping is required because the needs are read a long string
-            needsDisplay += '<p1>' + needsList[x].replace('[','').replace(']','').replaceAll("'", "") + '</p1><br>';
-        } 
+        // remove empty case
+        if (needsList[0] != "[]"){
+            for (x=0; x<needsList.length; x+=1){
+                // some string stripping is required because the needs are read a long string
+                thisNeed = needsList[x].replace('[','').replace(']','').replaceAll("'", "");
+                if (thisNeed.charAt(0) == " "){
+                    thisNeed = thisNeed.substring(1);
+                }
+                //needsDisplay += '<p1>' + needsList[x].replace('[','').replace(']','').replaceAll("'", "") + '</p1><br>';
+                //alert("<img src=\"{% static 'media/finalicons/" + thisNeed + ".png' %}\">");
+                needsDisplay += "<img src='/foodbank/static/media/finalicons/" + thisNeed + ".png' %}\" alt='" + thisNeed + "' class='result-needs'>";
+            } 
+        }
         needsDisplay += '<br><br>'; 
         $('#modalNeeds').html($(needsDisplay));
         $('#moreInfoModal').modal('show');
