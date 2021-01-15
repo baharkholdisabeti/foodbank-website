@@ -42,7 +42,7 @@
     {% load static %}
     {% load i18n %}
     {% load custom_app_tags %}
-      <img src="{% static 'media/finalicons/'|addstr:need|addstr:'.png' %}" alt="" class="img-fluid checkbox">
+      <img src="{% static 'media/finalicons/'|addstr:need|addstr:'.png' %}" alt="" filterby='{{ need }}' class="img-fluid checkbox">
     {% if forloop.last or forloop.counter|divisibleby:"5" %}
   </div>
   {% endif %}
