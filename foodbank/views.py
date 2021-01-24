@@ -48,8 +48,10 @@ def index(request):
             filterby = request.POST.get('filterby','')
             # check each branch need for the 'filterby' need and
             # adding that branch to result if found
-            #branches_needs = BranchNeed.objects.all()
-            #for need in branches_needs
+            branches_needs = BranchNeed.objects.all()
+            for need in branches_needs:
+                if need.need == filterby:
+                    results.append(need.branch_ID)
 
 
     # if a GET (or any other method) we'll create a blank form
