@@ -18,13 +18,25 @@ function initMap(longitude, latitude) {
 $( document ).ready(function() {
     $("img.img-fluid.checkbox").imgCheckbox({
         onload: function(){
-            // Do something fantastic!
             $(this).select();
         },
         onclick: function(el){
             var isChecked = el.hasClass("imgChked"),
             imgEl = el.children()[0];  // the img element
-            
+
+            var filterby = $(imgEl).attr('filterby');
+            var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+            // send post request to backend containing which need to filter by
+            $.ajax({
+                type: "POST",
+                url: "",
+                headers:{
+                    "X-CSRFToken": csrftoken
+                },
+                data: {
+                    'filterby': filterby
+                },
+            });
         console.log(imgEl.name + " is now " + (isChecked? "checked": "not-checked") + "!");
         }
     });
