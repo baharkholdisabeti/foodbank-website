@@ -42,18 +42,6 @@ def index(request):
             branches_list = Branch.objects.all()
             form = SearchForm()
             results = branches_list
-        # filter by post request
-        else:
-            form = SearchForm()
-            filterby = request.POST.get('filterby','')
-            # check each branch need for the 'filterby' need and
-            # adding that branch to result if found
-            branches_needs = BranchNeed.objects.all()
-            for bneed in branches_needs:
-                if bneed.need.need_str == filterby:
-                    results.append(bneed.branch_ID)
-            #for need in branches_needs
-
 
     # if a GET (or any other method) we'll create a blank form
     else:

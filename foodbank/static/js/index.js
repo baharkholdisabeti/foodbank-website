@@ -71,16 +71,6 @@ $( document ).ready(function() {
                 $(imgEl).removeClass("checked");
             }
             updateVisibility(filterby, isChecked)
-            /*if (isChecked){
-                $('div[name ="branch_listing"]').filter(function() {
-                    $(this).toggle($(this).attr('needs').includes(filterby))
-                });
-            }
-            else{
-                $('div[name ="branch_listing"]').filter(function() {
-                    $(this).toggle(!$(this).attr('needs').includes(filterby))
-                });
-            } */
         console.log(imgEl.name + " is now " + (isChecked? "checked": "not-checked") + "!");
         }
     });
