@@ -49,9 +49,9 @@ def index(request):
             # check each branch need for the 'filterby' need and
             # adding that branch to result if found
             branches_needs = BranchNeed.objects.all()
-            for need in branches_needs:
-                if need.need == filterby:
-                    results.append(need.branch_ID)
+            for bneed in branches_needs:
+                if bneed.need.need_str == filterby:
+                    results.append(bneed.branch_ID)
             #for need in branches_needs
 
 
@@ -60,6 +60,7 @@ def index(request):
         form = SearchForm()
         results = branches_list
     
+    branches_needs = []
     # find all needs
     for x in results:
         branches_names.append(str(x))
