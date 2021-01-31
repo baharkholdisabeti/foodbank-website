@@ -23,15 +23,18 @@ function makeVisible (checkedImages, visible, all){
     // default make all hidden
     $('div[name ="branch_listing"]').css("visibility", "hidden");
     if (visible){
-        for (var i = 0; i<checkedImages.length; i+=1){
-            var filterby = $(checkedImages[i]).attr('filterby');
-            $('div[name ="branch_listing"]')
-                .filter(function( index ) {
-                    // turn string needs into array
-                    var needsList = $(this).attr('needs')
-                    return (needsList.includes(filterby));
-                }).css("visibility", "visible");
-        }
+        $('div[name ="branch_listing"]').filter(function( index ) {
+            var include = 1;
+            for (var i = 0; i<checkedImages.length; i+=1){
+                var filterby = $(checkedImages[i]).attr('filterby');
+                // turn string needs into array
+                var needsList = $(this).attr('needs')
+                if (!(needsList.includes(filterby))){
+                    include = 0;
+                }
+            }
+            return include;
+        }).css("visibility", "visible");
     }
 }
 
