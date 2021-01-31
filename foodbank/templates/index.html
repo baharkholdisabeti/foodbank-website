@@ -33,20 +33,17 @@
 </div>
 
 <div id="demo" class="collapse">
-  {% for need in possible_needs %}
-
-  {% if forloop.first or forloop.counter0|divisibleby:"5" %}
-  <div class="row offset-2">
-  {% endif %}
+  <div id="grid-wrapper-filter">
     <!-- use a custom django tag to add the needs names in the middle of file names-->
     {% load static %}
     {% load i18n %}
     {% load custom_app_tags %}
-      <img src="{% static 'media/finalicons/'|addstr:need|addstr:'.png' %}" alt="" filterby='{{ need }}' class="img-fluid checkbox">
-    {% if forloop.last or forloop.counter|divisibleby:"5" %}
+    {% for need in possible_needs %}
+      <div class="grid-item">
+        <img src="{% static 'media/finalicons/'|addstr:need|addstr:'.png' %}" alt="" filterby='{{ need }}' class="img-fluid checkbox">
+      </div>
+    {% endfor %}
   </div>
-  {% endif %}
-  {% endfor %}
 </div>
 <!-- End of search bar -->
 
@@ -54,7 +51,7 @@
 {% if query %}
 <h3 class="text-center"><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
-<div id="grid-wrapper">
+<div id="grid-wrapper-branches">
 {% for branch_name, branch_info, needs, lng, lat in branches_zip %} 
   <div class="grid-item">
     <div branch_name="{{ branch_name }}" needs="{{ needs }}" lng="{{ lng }}" lat="{{ lat }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->

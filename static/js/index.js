@@ -29,11 +29,11 @@ function reloadGrid(){
 // find all modules with that need visible or hidden depending on visible boolean
 function makeVisible (checkedImages, visible, all){    
     if (all){
-        $('div[name ="branch_listing"]').css("visibility", "visible");
+        $('div[name ="branch_listing"]').parent().css("display", "block");//.css("visibility", "visible");
         return;
     }
     // default make all hidden
-    $('div[name ="branch_listing"]').css("visibility", "hidden");
+    $('div[name ="branch_listing"]').parent().css("display", "none");//.css("visibility", "hidden");
     if (visible){
         $('div[name ="branch_listing"]').filter(function( index ) {
             var include = 1;
@@ -46,7 +46,7 @@ function makeVisible (checkedImages, visible, all){
                 }
             }
             return include;
-        }).css("visibility", "visible");
+        }).parent().css("display", "block");//.css("visibility", "visible");
     }
 }
 
@@ -108,7 +108,7 @@ $( document ).ready(function() {
         // creating html code to display needs on modal
         // must split since needsList is read as a string
         var needsList = $(this).attr('needs').split(',');
-        var needsDisplay = '<p><b>Needs:<b></p>';
+        var needsDisplay = '<p><b>Needs:<b></p><div id="grid-wrapper-modal">';
         var x; 
         // remove empty case
         if (needsList[0] != "[]"){
@@ -120,10 +120,10 @@ $( document ).ready(function() {
                 }
                 //needsDisplay += '<p1>' + needsList[x].replace('[','').replace(']','').replaceAll("'", "") + '</p1><br>';
                 //alert("<img src=\"{% static 'media/finalicons/" + thisNeed + ".png' %}\">");
-                needsDisplay += "<img src='/foodbank/static/media/finalicons/" + thisNeed + ".png' %}\" alt='" + thisNeed + "' class='result-needs'>";
+                needsDisplay += "<div class='grid-item'><img src='/foodbank/static/media/finalicons/" + thisNeed + ".png' %}\" alt='" + thisNeed + "' class='result-needs'></div>";
             } 
         }
-        needsDisplay += '<br><br>'; 
+        needsDisplay += '<br><br></div>'; 
         $('#modalNeeds').html($(needsDisplay));
         $('#moreInfoModal').modal('show');
 
