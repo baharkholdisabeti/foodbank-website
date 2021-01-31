@@ -54,23 +54,17 @@
 {% if query %}
 <h3 class="text-center"><strong>We found these results for "{{ query }}":</strong></h3><br>
 {% endif %}
-<div class="ex1">
-  {% for branch_name, branch_info, needs, lng, lat in branches_zip %}  
-    {% if not forloop.counter|divisibleby:2 %}
-    <div class="row offset-1">
-    {% endif %}
-      <div class="col-sm-5">
-        <div branch_name="{{ branch_name }}" needs="{{ needs }}" lng="{{ lng }}" lat="{{ lat }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->
-          <br><p><b>{{ branch_name}}</b></p>
-          <p>{{ branch_info | linebreaks}}</p>
-        </div>
-      </div>
-    {% if forloop.counter|divisibleby:2 %}
+<div id="grid-wrapper">
+{% for branch_name, branch_info, needs, lng, lat in branches_zip %} 
+  <div class="grid-item">
+    <div branch_name="{{ branch_name }}" needs="{{ needs }}" lng="{{ lng }}" lat="{{ lat }}" class="container round" name="branch_listing">  <!-- These containers are clickable -->
+      <br><p><b>{{ branch_name}}</b></p>
+      <p>{{ branch_info | linebreaks}}</p>
     </div>
-    {% endif %}
-    <br>
-  {% endfor %}
+  </div>
+{% endfor %}
 </div>
+
 
 <!-- Modal -->
 <div id="moreInfoModal" class="modal hide" role="dialog" 

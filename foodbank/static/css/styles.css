@@ -1,3 +1,9 @@
+#grid-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-left: 100px;
+	padding-right: 100px;
+}
 .navbar-custom { 
 	background-color: rgb(0, 71, 35);
 	width: 120%;

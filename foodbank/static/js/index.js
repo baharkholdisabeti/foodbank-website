@@ -14,6 +14,18 @@ function initMap(longitude, latitude) {
     });
 }
 
+// remove hidden containers from grid, add visible containers in grid
+function reloadGrid(){
+    let dataArray = []
+    dataArray = $('div[name ="branch_listing"]:visible').toArray()
+    alert(dataArray.length)
+    let numColumns = 2; // set number of columns    
+    let grid = document.getElementById('grid-wrapper');
+    // sets number of rows dynamically 
+    grid.style.gridTemplateRows = `repeat(${Math.ceil(dataArray.length / numColumns)}, 1fr)`;
+    grid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
+}
+
 // find all modules with that need visible or hidden depending on visible boolean
 function makeVisible (checkedImages, visible, all){    
     if (all){
@@ -49,11 +61,15 @@ function updateVisibility(filterby, isChecked){
     // if no filters selected, make all elements visible
     if (!checkedImgs.length){
         makeVisible(uncheckedImgs, true, true);
+        // now we reload the grid's display
+        //reloadGrid();
         return;
     }
     // check which filters are selected and turn them visible
     // turn others hidden
     makeVisible(checkedImgs, true, false);
+    // now we reload the grid's display
+    //reloadGrid();
 }
 
 // JQuery that's being run when the page loads
