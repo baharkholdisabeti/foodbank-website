@@ -14,17 +14,82 @@ function initMap(longitude, latitude) {
     });
 }
 
+// remove hidden containers from grid, add visible containers in grid
+function reloadGrid(){
+    let dataArray = []
+    dataArray = $('div[name ="branch_listing"]:visible').toArray()
+    alert(dataArray.length)
+    let numColumns = 2; // set number of columns    
+    let grid = document.getElementById('grid-wrapper');
+    // sets number of rows dynamically 
+    grid.style.gridTemplateRows = `repeat(${Math.ceil(dataArray.length / numColumns)}, 1fr)`;
+    grid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
+}
+
+// find all modules with that need visible or hidden depending on visible boolean
+function makeVisible (checkedImages, visible, all){    
+    if (all){
+        $('div[name ="branch_listing"]').css("visibility", "visible");
+        return;
+    }
+    // default make all hidden
+    $('div[name ="branch_listing"]').css("visibility", "hidden");
+    if (visible){
+        $('div[name ="branch_listing"]').filter(function( index ) {
+            var include = 1;
+            for (var i = 0; i<checkedImages.length; i+=1){
+                var filterby = $(checkedImages[i]).attr('filterby');
+                // turn string needs into array
+                var needsList = $(this).attr('needs')
+                if (!(needsList.includes(filterby))){
+                    include = 0;
+                }
+            }
+            return include;
+        }).css("visibility", "visible");
+    }
+}
+
+// updates visibility of branch modules based on need filter
+function updateVisibility(filterby, isChecked){ 
+    var checkedImgs = []
+    var uncheckedImgs = []
+    checkedImgs = $("img.img-fluid.checkbox").filter(function( index, el ) {
+        var thisFilterby = $(this).attr('filterby');
+        return (($(this).hasClass("checked")) || (thisFilterby==filterby && isChecked)) ;
+    });
+    // if no filters selected, make all elements visible
+    if (!checkedImgs.length){
+        makeVisible(uncheckedImgs, true, true);
+        // now we reload the grid's display
+        //reloadGrid();
+        return;
+    }
+    // check which filters are selected and turn them visible
+    // turn others hidden
+    makeVisible(checkedImgs, true, false);
+    // now we reload the grid's display
+    //reloadGrid();
+}
+
 // JQuery that's being run when the page loads
 $( document ).ready(function() {
     $("img.img-fluid.checkbox").imgCheckbox({
         onload: function(){
-            // Do something fantastic!
             $(this).select();
         },
         onclick: function(el){
-            var isChecked = el.hasClass("imgChked"),
+            var isChecked = el.hasClass("imgChked");
             imgEl = el.children()[0];  // the img element
-            
+            var filterby = $(imgEl).attr('filterby');
+            // add checked class to element if it is clicked on
+            if (isChecked){
+                $(imgEl).addClass("checked");
+            }
+            else{
+                $(imgEl).removeClass("checked");
+            }
+            updateVisibility(filterby, isChecked)
         console.log(imgEl.name + " is now " + (isChecked? "checked": "not-checked") + "!");
         }
     });
@@ -43,12 +108,21 @@ $( document ).ready(function() {
         // creating html code to display needs on modal
         // must split since needsList is read as a string
         var needsList = $(this).attr('needs').split(',');
-        var needsDisplay = '<p1>Needs:</p1><br>';
+        var needsDisplay = '<p><b>Needs:<b></p>';
         var x; 
-        for (x=0; x<needsList.length; x+=1){
-            // some string stripping is required because the needs are read a long string
-            needsDisplay += '<p1>' + needsList[x].replace('[','').replace(']','').replaceAll("'", "") + '</p1><br>';
-        } 
+        // remove empty case
+        if (needsList[0] != "[]"){
+            for (x=0; x<needsList.length; x+=1){
+                // some string stripping is required because the needs are read a long string
+                thisNeed = needsList[x].replace('[','').replace(']','').replaceAll("'", "");
+                if (thisNeed.charAt(0) == " "){
+                    thisNeed = thisNeed.substring(1);
+                }
+                //needsDisplay += '<p1>' + needsList[x].replace('[','').replace(']','').replaceAll("'", "") + '</p1><br>';
+                //alert("<img src=\"{% static 'media/finalicons/" + thisNeed + ".png' %}\">");
+                needsDisplay += "<img src='/foodbank/static/media/finalicons/" + thisNeed + ".png' %}\" alt='" + thisNeed + "' class='result-needs'>";
+            } 
+        }
         needsDisplay += '<br><br>'; 
         $('#modalNeeds').html($(needsDisplay));
         $('#moreInfoModal').modal('show');
